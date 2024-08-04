@@ -1,0 +1,118 @@
+server:
+  port: 1012
+  address: 0.0.0.0
+lavalink:
+  server:
+    password: "lavalink"
+    sources:
+      youtube: false
+      bandcamp: true
+      soundcloud: true
+      twitch: true
+      vimeo: true
+      http: true
+      local: true
+    filters:
+      volume: true
+      equalizer: true
+      karaoke: true
+      timescale: true
+      tremolo: true
+      vibrato: true
+      distortion: true
+      rotation: true
+      channelMix: true
+      lowPass: true
+    bufferDurationMs: 500
+    frameBufferDurationMs: 10000
+    youtubePlaylistLoadLimit: 6
+    opusEncodingQuality: 10
+    resamplingQuality: HIGH
+    trackStuckThresholdMs: 10000
+    playerUpdateInterval: 5
+    useSeekGhosting: true
+    youtubeSearchEnabled: true
+    soundcloudSearchEnabled: true
+    gc-warnings: true
+
+  plugins:
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.5.1"
+      snapshot: false # Set to true if you want to use a snapshot 
+    - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.2.0"
+      repository: "https://maven.lavalink.dev/releases"
+      snapshot: false
+    - dependency: "com.github.topi314.lavasearch:lavasearch-plugin:1.0.0"
+      repository: "https://maven.lavalink.dev/releases"
+      snapshot: false
+    - dependency: "com.dunctebot:skybot-lavalink-plugin:1.4.2"
+      repository: "https://m2.duncte123.dev/releases"
+    - dependency: "me.rohank05:lavalink-filter-plugin:0.0.4"
+      repository: "https://jitpack.io"
+
+plugins:
+  youtube:
+    enabled: true # Whether this source can be used.
+    allowSearch: true # Whether "ytsearch:" and "ytmsearch:" can be used.
+    allowDirectVideoIds: true # Whether just video IDs can match. If false, only complete URLs will be loaded.
+    allowDirectPlaylistIds: true # Whether just playlist IDs can match. If false, only complete URLs will be loaded.
+    # The clients to use for track loading. See below for a list of valid clients.
+    # Clients are queried in the order they are given (so the first client is queried first and so on...)
+    clients:
+      - MUSIC
+      - ANDROID
+      - WEB
+    # You can configure individual clients with the following.
+    # Any options or clients left unspecified will use their default values,
+    # which enables everything for all clients.
+    WEB: # names are specified as they are written below under "Available Clients".
+      # This will disable using the WEB client for video playback.
+      playback: false
+    TVHTML5EMBEDDED:
+      # The below config disables everything except playback for this client.
+      playlistLoading: false # Disables loading of playlists and mixes for this client.
+      videoLoading: false # Disables loading of videos for this client (playback is still allowed).
+      searching: false # Disables the ability to search for videos for this client.
+  lavasrc:
+    providers:
+      - 'ytsearch:"%ISRC%"'
+      - "ytsearch:%QUERY%"
+      - 'ytmsearch:"%ISRC%"'
+      - "ytmsearch:%QUERY%"
+      - "scsearch:%QUERY%"
+      - "dzisrc:%ISRC%"
+      - "dzsearch:%QUERY%"
+    sources:
+      spotify: true
+      applemusic: true
+      deezer: true
+      yadexmusic: false
+    applemusic:
+      countryCode: "VN"
+      mediaAPIToken: "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNjkwNDA2ODM1LCJleHAiOjE2OTc2NjQ0MzUsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.seFShNhCiGuoj5qBOqECAoKBtKJF0wN-KaEj4HICJnExwXtnYabeb0jTSSrK1uez5b6XvYUOsx0pgARKm1AJQg"
+    spotify:
+      clientId: "9729393ad26c4c8d9e4e4a0bc8cfd582"
+      clientSecret: "623ca4708dc9423b9aa99db377c5954e"
+      countryCode: "VI"
+    deezer:
+      masterDecryptionKey: "g4el58wc0zvf9na1"
+  dunctebot:
+    ttsLanguage: "VI"
+    sources:
+      getyarn: false
+      clypit: true
+      tts: false
+      pornhub: false
+      reddit: true
+      ocremix: false
+      tiktok: true
+      mixcloud: true
+      soundgasm: false
+
+logging:
+  file:
+    max-history: 0
+    max-size: 0MB
+  path: ./logs/
+  level:
+    root: INFO
+    lavalink: INFO
