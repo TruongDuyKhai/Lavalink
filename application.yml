@@ -58,6 +58,7 @@ plugins:
     clients:
       - WEB
       - TVHTML5EMBEDDED
+      - ANDROID_MUSIC
     # You can configure individual clients with the following.
     # Any options or clients left unspecified will use their default values,
     # which enables everything for all clients.
