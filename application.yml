@@ -56,9 +56,8 @@ plugins:
     # The clients to use for track loading. See below for a list of valid clients.
     # Clients are queried in the order they are given (so the first client is queried first and so on...)
     clients:
-      - MUSIC
-      - ANDROID
       - WEB
+      - TVHTML5EMBEDDED
     # You can configure individual clients with the following.
     # Any options or clients left unspecified will use their default values,
     # which enables everything for all clients.
