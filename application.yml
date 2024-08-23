@@ -36,7 +36,7 @@ lavalink:
     gc-warnings: true
 
   plugins:
-    - dependency: "dev.lavalink.youtube:youtube-plugin:1.5.2"
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.7.1"
       snapshot: false # Set to true if you want to use a snapshot 
     - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.2.0"
       repository: "https://maven.lavalink.dev/releases"
